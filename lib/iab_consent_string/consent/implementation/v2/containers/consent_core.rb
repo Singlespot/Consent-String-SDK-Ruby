@@ -35,6 +35,15 @@ module IABConsentString
               @publisher_restrictions = PublisherRestrictionSection.new
             end
 
+            #Force language to be downcase
+            def consent_language
+              @consent_language.downcase
+            end
+
+            def publisher_cc
+              @publisher_cc.downcase
+            end
+
             #
             # set Special Feature Opt in value 
             #
