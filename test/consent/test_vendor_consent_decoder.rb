@@ -38,7 +38,7 @@ class VendorConsentDecoderTest < Minitest::Test
     assert_equal(5, vendorConsent.getCmpVersion)
     assert_equal(194, vendorConsent.getCmpId)
     assert_equal(4, vendorConsent.getConsentScreen)
-    assert_equal("EN", vendorConsent.getConsentLanguage)
+    assert_equal("en", vendorConsent.getConsentLanguage)
     assert_equal(32, vendorConsent.getVendorListVersion)
     assert_equal(2, vendorConsent.getTcfPolicyVersion)
     assert_equal(10, vendorConsent.getMaxVendorId)

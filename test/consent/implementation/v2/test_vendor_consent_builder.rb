@@ -48,7 +48,7 @@ class VendorConsentV2BuilderTest < Minitest::Test
   end
 
   def test_withConsentLanguage
-    consent_laguage = ['EN', 'FR', 'DE'].sample
+    consent_laguage = ['en', 'fr', 'de'].sample
     consent = @consent_builder.withConsentLanguage(consent_laguage).build
     assert_equal(consent_laguage,consent.getConsentLanguage())
   end
@@ -78,7 +78,7 @@ class VendorConsentV2BuilderTest < Minitest::Test
   end
 
   def test_withwithPublisherCC
-    publisher_cc = ['FR', 'DE', 'GG', 'GB'].sample
+    publisher_cc = ['fr', 'de', 'gg', 'gb'].sample
     consent = @consent_builder.withPublisherCC(publisher_cc).build
     assert_equal(publisher_cc,consent.getPublisherCC())
   end
