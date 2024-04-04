@@ -42,6 +42,6 @@ class VendorConsentEncoderTest < Minitest::Test
     @consent_builder.withConsentRecordLastUpdatedOn((DateTime.new(2020,6,1,1,1,1).to_time.to_f * 1000).to_i)
     consent = @consent_builder.build
     base64String = IABConsentString::Consent::VendorConsentEncoder.toBase64String(consent)
-    assert_equal("CO0S0ECO0S0ECACAAAktAAAAAAAAAAAAAEloAAAAAAAA.IAAA.QAAA",base64String)
+    assert_equal("CO0S0ECO0S0ECACAAAENAAAAAAAAAAAAAAhoAAAAAAAA.IAAA.QAAA",base64String)
   end
 end

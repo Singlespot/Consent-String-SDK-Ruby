@@ -400,7 +400,7 @@ module IABConsentString
             bits_core.setInt(IABConsentString::GDPRConstantsV2::Core::CMP_ID_OFFSET, IABConsentString::GDPRConstantsV2::Core::CMP_ID_SIZE, @consent_core.cmp_id)
             bits_core.setInt(IABConsentString::GDPRConstantsV2::Core::CMP_VERSION_OFFSET, IABConsentString::GDPRConstantsV2::Core::CMP_VERSION_SIZE, @consent_core.cmp_version)
             bits_core.setInt(IABConsentString::GDPRConstantsV2::Core::CONSENT_SCREEN_OFFSET, IABConsentString::GDPRConstantsV2::Core::CONSENT_SCREEN_SIZE, @consent_core.consent_screen)
-            bits_core.setSixBitString(IABConsentString::GDPRConstantsV2::Core::CONSENT_LANGUAGE_OFFSET, IABConsentString::GDPRConstantsV2::Core::CONSENT_LANGUAGE_SIZE, @consent_core.consent_language)
+            bits_core.setSixBitLowerString(IABConsentString::GDPRConstantsV2::Core::CONSENT_LANGUAGE_OFFSET, IABConsentString::GDPRConstantsV2::Core::CONSENT_LANGUAGE_SIZE, @consent_core.consent_language)
             bits_core.setInt(IABConsentString::GDPRConstantsV2::Core::VENDOR_LIST_VERSION_OFFSET, IABConsentString::GDPRConstantsV2::Core::VENDOR_LIST_VERSION_SIZE, @consent_core.vendor_list_version)
             bits_core.setInt(IABConsentString::GDPRConstantsV2::Core::TCF_POLICY_VERSION_OFFSET, IABConsentString::GDPRConstantsV2::Core::TCF_POLICY_VERSION_SIZE, @consent_core.tcf_policy_version)
             bits_core.setBoolean(IABConsentString::GDPRConstantsV2::Core::IS_SERVICE_SPECIFIC_OFFSET, @consent_core.is_service_specific)
@@ -415,7 +415,7 @@ module IABConsentString
               bits_core.setBoolean(IABConsentString::GDPRConstantsV2::Core::PURPOSES_LI_TRANSPARENCY_OFFSET + index, consent)
             end
             bits_core.setBoolean(IABConsentString::GDPRConstantsV2::Core::PURPOSE_ONE_TREATMENT_OFFSET, @consent_core.purpose_one_treatment)
-            bits_core.setSixBitString(IABConsentString::GDPRConstantsV2::Core::PUBLISHER_CC_OFFSET, IABConsentString::GDPRConstantsV2::Core::PUBLISHER_CC_SIZE, @consent_core.publisher_cc)
+            bits_core.setSixBitLowerString(IABConsentString::GDPRConstantsV2::Core::PUBLISHER_CC_OFFSET, IABConsentString::GDPRConstantsV2::Core::PUBLISHER_CC_SIZE, @consent_core.publisher_cc)
             @consent_core.vendor_consent.write_bits(bits_core, IABConsentString::GDPRConstantsV2::Core::VENDOR_START_SECTION_OFFSET)
             offset = IABConsentString::GDPRConstantsV2::Core::VENDOR_START_SECTION_OFFSET + @consent_core.vendor_consent.string_bit_size
             @consent_core.vendor_legitimate_interest.write_bits(bits_core, offset)

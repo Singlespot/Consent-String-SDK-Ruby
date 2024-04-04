@@ -146,7 +146,7 @@ module IABConsentString
       @bytes.length * 8
     end
 
-    # Interprets the given interval in the bit string as a series of six bit characters, where 0=A and 26=Z
+    # Interprets the given interval in the bit string as a series of six bit characters, where 0=A and 25=Z
     # @param startInclusive [Integer]  the nth bit in the bitstring from which to start the interpretation
     # @param size [Integer]  the number of bits to include in the string
     # @return [String] the string given by the above interpretation
@@ -161,10 +161,28 @@ module IABConsentString
         charCode = getInt(startInclusive + (i * 6), 6) + 65
         val << charCode.chr
       end
-      val.upcase
+      val
     end
 
-    # Interprets characters, as 0=A and 26=Z and writes to the given interval in the bit string as a series of six bits
+    # Interprets the given interval in the bit string as a series of six bit characters, where 0=a and 25=z
+    # @param startInclusive [Integer]  the nth bit in the bitstring from which to start the interpretation
+    # @param size [Integer]  the number of bits to include in the string
+    # @return [String] the string given by the above interpretation
+    # @raise [VendorConsentParseError] when the requested interval is not a multiple of six
+    def getSixBitLowerString(startInclusive, size)
+      if (size % 6 != 0)
+        raise IABConsentString::Error::VendorConsentParseError , "string bit length must be multiple of six: " + size, caller
+      end
+      charNum = size / 6
+      val = String.new()
+      for i in (0...charNum) do
+        charCode = getInt(startInclusive + (i * 6), 6) + 97
+        val << charCode.chr
+      end
+      val
+    end
+
+    # Interprets characters, as 0=A and 25=Z and writes to the given interval in the bit string as a series of six bits
     # @param startInclusive [Integer] the nth bit in the bitstring from which to start writing
     # @param size [Integer] the size of the bitstring
     # @param to [Integer] the string given by the above interpretation
@@ -176,6 +194,22 @@ module IABConsentString
       values = to.chars
       for i in (0...values.length) do
         charCode = values[i].ord - 65
+        setInt(startInclusive + (i * 6), 6, charCode)
+      end
+    end 
+
+    # Interprets characters, as 0=a and 25=z and writes to the given interval in the bit string as a series of six bits
+    # @param startInclusive [Integer] the nth bit in the bitstring from which to start writing
+    # @param size [Integer] the size of the bitstring
+    # @param to [Integer] the string given by the above interpretation
+    # @raise [VendorConsentCreateError] when the requested interval is not a multiple of six
+    def setSixBitLowerString(startInclusive, size, to)
+      if (size % 6 != 0 || size / 6 != to.length())
+        raise IABConsentString::Error::VendorConsentCreateError , "bit array size must be multiple of six and equal to 6 times the size of string", caller
+      end
+      values = to.chars
+      for i in (0...values.length) do
+        charCode = values[i].ord - 97
         setInt(startInclusive + (i * 6), 6, charCode)
       end
     end 

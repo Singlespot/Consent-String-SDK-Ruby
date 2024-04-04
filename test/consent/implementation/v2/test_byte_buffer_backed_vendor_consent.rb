@@ -106,7 +106,7 @@ class ByteBufferBackedVendorConsentV2Test < Minitest::Test
     vendorConsent = IABConsentString::Consent::Implementation::V2::ByteBufferBackedVendorConsent.new(IABConsentString::Util::Utils.fromBinaryString(binaryString))
 
     # Then: correct language code is returned
-    assert_equal("EN",vendorConsent.getConsentLanguage())
+    assert_equal("en",vendorConsent.getConsentLanguage())
   end 
 
   def test_getVendorListVersion
@@ -352,7 +352,7 @@ class ByteBufferBackedVendorConsentV2Test < Minitest::Test
    vendorConsent = IABConsentString::Consent::Implementation::V2::ByteBufferBackedVendorConsent.new(IABConsentString::Util::Utils.fromBinaryString(binaryString))
 
    # Then: correct vendor list version is returned
-   assert_equal('FR',vendorConsent.getPublisherCC)
+   assert_equal('fr',vendorConsent.getPublisherCC)
   end
 
   def test_disclosed_vendor
