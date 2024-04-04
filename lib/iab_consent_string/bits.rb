@@ -210,6 +210,7 @@ module IABConsentString
       values = to.chars
       for i in (0...values.length) do
         charCode = values[i].ord - 97
+        raise IABConsentString::Error::VendorConsentCreateError , "Cannot store char #{values[i]} in #{to}, char must be between 'a' and 'z' ", caller if charCode < 0 || charCode > 25
         setInt(startInclusive + (i * 6), 6, charCode)
       end
     end 
