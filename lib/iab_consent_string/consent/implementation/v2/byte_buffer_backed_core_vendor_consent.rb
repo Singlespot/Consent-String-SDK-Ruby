@@ -34,7 +34,7 @@ module IABConsentString
           end
 
           def getConsentLanguage
-            @bits_core.getSixBitLowerString(IABConsentString::GDPRConstantsV2::Core::CONSENT_LANGUAGE_OFFSET,IABConsentString::GDPRConstantsV2::Core::CONSENT_LANGUAGE_SIZE)
+            @bits_core.getSixBitPermissiveString(IABConsentString::GDPRConstantsV2::Core::CONSENT_LANGUAGE_OFFSET,IABConsentString::GDPRConstantsV2::Core::CONSENT_LANGUAGE_SIZE)
           end
 
           def getVendorListVersion
@@ -91,7 +91,7 @@ module IABConsentString
           end
 
           def getPublisherCC
-            @bits_core.getSixBitLowerString(IABConsentString::GDPRConstantsV2::Core::PUBLISHER_CC_OFFSET,IABConsentString::GDPRConstantsV2::Core::PUBLISHER_CC_SIZE)
+            @bits_core.getSixBitPermissiveString(IABConsentString::GDPRConstantsV2::Core::PUBLISHER_CC_OFFSET,IABConsentString::GDPRConstantsV2::Core::PUBLISHER_CC_SIZE)
           end
 
           def getVendorConsent

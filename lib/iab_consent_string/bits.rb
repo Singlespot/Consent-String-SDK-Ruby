@@ -182,6 +182,24 @@ module IABConsentString
       val
     end
 
+    # Interprets the given interval in the bit string as a series of six bit characters, is permissive of misencoded languuage
+    # @param startInclusive [Integer]  the nth bit in the bitstring from which to start the interpretation
+    # @param size [Integer]  the number of bits to include in the string
+    # @return [String] the string given by the above interpretation
+    # @raise [VendorConsentParseError] when the requested interval is not a multiple of six
+    def getSixBitPermissiveString(startInclusive, size)
+      if (size % 6 != 0)
+        raise IABConsentString::Error::VendorConsentParseError , "string bit length must be multiple of six: " + size, caller
+      end
+      charNum = size / 6
+      val = String.new()
+      for i in (0...charNum) do
+        charCode = getInt(startInclusive + (i * 6), 6) % 32 + 96
+        val << charCode.chr
+      end
+      val
+    end
+
     # Interprets characters, as 0=A and 25=Z and writes to the given interval in the bit string as a series of six bits
     # @param startInclusive [Integer] the nth bit in the bitstring from which to start writing
     # @param size [Integer] the size of the bitstring
