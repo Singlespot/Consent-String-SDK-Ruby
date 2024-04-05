@@ -194,7 +194,7 @@ module IABConsentString
       charNum = size / 6
       val = String.new()
       for i in (0...charNum) do
-        charCode = getInt(startInclusive + (i * 6), 6) % 32 + 96
+        charCode = getInt(startInclusive + (i * 6), 6) % 32 + 97
         val << charCode.chr
       end
       val
