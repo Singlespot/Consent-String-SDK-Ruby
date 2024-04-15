@@ -1,6 +1,5 @@
 require 'minitest/autorun'
 require 'iab_consent_string'
-require 'pry'
 
 class PublisherRestrictionParserV2Test < Minitest::Test
   def test_ranged_vendor_consented

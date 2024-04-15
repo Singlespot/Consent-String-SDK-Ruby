@@ -1,7 +1,6 @@
 require 'iab_consent_string/bits'
 require 'iab_consent_string/gdpr_constants'
 require_relative 'publisher_restriction_section.rb'
-require 'pry'
 
 module IABConsentString
   module Consent
